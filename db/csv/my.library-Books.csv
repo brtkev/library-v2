@@ -1,6 +1,6 @@
-ID;title;author_ID
-201;Wuthering Heights;101
-207;Jane Eyre;107
-251;The Raven;150
-252;Eleonora;150
-271;Catweazle;170
+ID;title;author_ID;categories_ID
+201;Wuthering Heights;101;1,2,3
+207;Jane Eyre;107;2
+251;The Raven;150;3
+252;Eleonora;150;1
+271;Catweazle;170;2

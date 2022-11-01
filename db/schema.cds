@@ -8,6 +8,7 @@ using { managed, cuid } from '@sap/cds/common';
     publishDate : Date;
     imageLink : String(100);
     editorial : String(100);
+    source : String(100);
     author : Association to Authors;
     categories : Association to many Categories;
   }

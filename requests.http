@@ -6,4 +6,5 @@ http://localhost:4004/library/Books
 
 ###
 #Books with authors and categories
-http://localhost:4004/library/Books?$expand=authors($expand=author),categories($expand=category)
+http://localhost:4004/library/Books?$expand=authors($expand=author),categories($expand=category)&$search=kevin&$count=true
+

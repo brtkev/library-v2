@@ -3,6 +3,10 @@
 #Books
 http://localhost:4004/library/Books?$orderby=ID desc&
 
+###
+#book by id
+http://localhost:4004/library/Books(272)
+
 
 ###
 #Books with authors and categories google
@@ -29,7 +33,7 @@ Accept: application/json
 
 ###
 #update book
-PATCH http://localhost:4004/library/Books(272)
+PATCH http://localhost:4004/library/Books(271)
 OData-Version: 4.0
 Content-Type: application/json;odata.metadata=minimal
 Accept: application/json

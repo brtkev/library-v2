@@ -12,23 +12,27 @@ sap.ui.define([
 
     onSearchId: function (oEvent){
       let search = oEvent.getParameter("query");
+      let model = this.getView().getModel();
       
       if(this.getOwnerComponent().bookIdError(search)) return;
       
-      const url = "/api/search?" + new URLSearchParams({
-        search,
-        attribute : 'book_id'
-      });
+      const url = `/library/Books(${search})`
+
       fetch(url, { method: "GET" })
       .then(r => r.json()
       .then(data => {
-        if(data.length > 0){
-          let model = this.getView().getModel();
-          model.setData({...model.getData(), ...{book : data[0], inputStatus : true}})
-        }else{
-          MessageToast.show(`id ${search} not found!`)
+
+        if(data.error) {
+          MessageToast. show(`id ${search} not found!`)
+          model.setData({...model.getData(), book : this.getOwnerComponent().getBookModel(), inputStatus : false})
+        }
+
+        else{
+
+          model.setData({...model.getData(), book : data, inputStatus : true})
         }
       }))
+
       .catch(err => {
         console.log(err);
         MessageToast.show("Error happened searching for an id");
@@ -36,28 +40,27 @@ sap.ui.define([
     },
 
     onSubmit: function ( ){
-      let data = this.getView().getModel().getData();
+      let book = this.getView().getModel().getData().book;
 
-      if(this.getOwnerComponent().titleError(data.book.title)) return;
+      if(this.getOwnerComponent().titleError(book.title)) return;
 
-      const url = "/api/update?" + new URLSearchParams(data.book);
-      fetch(url, { method: "PUT" })
+      const url = `/library/Books(${book.ID})`
+      const headers = this.getOwnerComponent().getLibrary().getHeaders();
+
+      delete book.ID;
+      const body = JSON.stringify(book);
+
+      fetch(url, { method: "PATCH" , headers, body}  )
       .then(r => r.json()
       .then(data => {
-        MessageToast.show(`book ${data.book_id} updated`);
+
+        MessageToast.show(`book ${data.ID} updated`);
+
         const model = this.getView().getModel();
-        model.setData({...model.getData(), book : {
-          book_id : "",
-          title : "",
-          subtitle : "",
-          description : "",
-          printdate : "",
-          editorial: "",
-          img : "",
-          categories : "",
-          authors: ""
-        }, inputStatus : false})
+
+        model.setData({...model.getData(), book : this.getOwnerComponent().getBookModel(), inputStatus : false})
       }))
+
       .catch(err => {
         MessageToast.show(`Error happened updating the book`);
       })

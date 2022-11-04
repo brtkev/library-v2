@@ -95,6 +95,19 @@ sap.ui.define([
 				authors: "",
 				categories: "",
 			}
+		},
+
+		getLibrary: function(){
+			return {
+
+				getHeaders: function(){
+					return  {
+						"OData-Version": "4.0",
+						"Content-Type": "application/json;odata.metadata=minimal",
+						"Accept": "application/json"
+					}
+				}
+			}
 		}
 	})
 })

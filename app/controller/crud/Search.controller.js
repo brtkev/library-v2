@@ -19,7 +19,7 @@ sap.ui.define([
 				//get attribute to filter
 				
 				// let attribute = this.byId("bookListSelect").getSelectedItem().getKey(); //attribute of the search
-				const url = "../../library/Books?" + new URLSearchParams({
+				const url = "/library/Books?" + new URLSearchParams({
 					$expand : "authors($expand=author),categories($expand=category)", 
 					$search : search,
 					$count : true,

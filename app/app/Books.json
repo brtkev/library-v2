@@ -1,0 +1,49 @@
+{
+  "Books" : [
+    {
+      "id": 1,
+      "title": "harry potter",
+      "subtitle": "filosopher stone",
+      "author": "jk algo",
+      "category": "fantasy",
+      "print_date": "19/10/1995",
+      "editor": "owlcompany"
+    },
+    {
+      "id": 2,
+      "title": "harry potter",
+      "subtitle": "harri 2",
+      "author": "jk algo",
+      "category": "fantasy",
+      "print_date": "19/10/1995",
+      "editor": "owlcompany"
+    },
+    {
+      "id": 3,
+      "title": "harry potter",
+      "subtitle": "prisionero de askaban",
+      "author": "jk algo",
+      "category": "fantasy",
+      "print_date": "19/10/1995",
+      "editor": "owlcompany"
+    },
+    {
+      "id": 4,
+      "title": "harry potter",
+      "subtitle": "reliquias de la muerte parte 1",
+      "author": "jk algo",
+      "category": "fantasy",
+      "print_date": "19/10/1995",
+      "editor": "owlcompany"
+    },
+    {
+      "id": 5,
+      "title": "harry potter",
+      "subtitle": "reliquias de la muerte parte 1",
+      "author": "jk algo",
+      "category": "fantasy",
+      "print_date": "19/10/1995",
+      "editor": "owlcompany"
+    }
+  ]
+}

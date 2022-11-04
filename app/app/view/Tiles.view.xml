@@ -1,0 +1,39 @@
+<mvc:View xmlns:core="sap.ui.core"
+		controllerName="root.controller.Tiles"
+		xmlns="sap.m"
+		xmlns:mvc="sap.ui.core.mvc">
+  <FlexBox justifyContent="SpaceAround" wrap="Wrap" alignItems="Center" >
+    <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" 
+      header="{i18n>addTileHeader}" 
+      press=".onCreatePress"
+      frameType="OneByOne">
+      <TileContent >
+        <ImageContent src="sap-icon://add" />
+      </TileContent>
+    </GenericTile>
+    <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" 
+      header="{i18n>updateTileHeader}" 
+      press=".onUpdatePress"
+      frameType="OneByOne">
+      <TileContent >
+        <ImageContent src="sap-icon://edit" />
+      </TileContent>
+    </GenericTile>
+    <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" 
+      header="{i18n>deleteTileHeader}" 
+      press=".onDeletePress"
+      frameType="OneByOne">
+      <TileContent >
+        <ImageContent src="sap-icon://decline" />
+      </TileContent>
+    </GenericTile>
+    <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" 
+      header="Search books" 
+      press=".onSearchPress"
+      frameType="OneByOne">
+      <TileContent >
+        <ImageContent src="sap-icon://search" />
+      </TileContent>
+    </GenericTile>
+  </FlexBox>
+</mvc:View>

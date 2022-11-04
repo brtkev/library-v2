@@ -1,7 +1,8 @@
 namespace my.library;
 using { managed, cuid } from '@sap/cds/common';
 
-  entity Books : managed, cuid {
+  entity Books {
+    key ID : Integer;
     title : String(100) not null; 
     subtitle : String(100);
     descr : String;
@@ -13,7 +14,8 @@ using { managed, cuid } from '@sap/cds/common';
     categories : Association to many Books2Categories on categories.book = $self;
   }
 
-  entity Authors : managed, cuid {
+  entity Authors {
+    key ID : Integer;
     name : String(100) not null;
     books : Association to many Books2Authors on books.author = $self;
   }
@@ -23,7 +25,8 @@ using { managed, cuid } from '@sap/cds/common';
     key author : Association to Authors;
   }
 
-  entity Categories : cuid, managed {
+  entity Categories {
+    key ID : Integer ;
     name : String(100) not null;
     books : Association to many Books2Categories on books.category = $self
   }

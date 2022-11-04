@@ -1,0 +1,26 @@
+<mvc:View
+  controllerName="root.controller.crud.Delete"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core"
+	xmlns="sap.m" >
+	<Page class="sapUiSmallMargin" showNavButton="true"
+		navButtonPress=".onNavBack" title="Delete"   >
+		<headerContent>
+			<!-- <Title text="{}" /> -->
+			<Button 
+				icon="sap-icon://cancel"
+				press=".truncate"
+				text="delete all"
+				/>
+		</headerContent>
+
+    <FlexBox class="sapUiSmallMargin" alignItems="Center" justifyContent="Center" width="100%" >
+      <Label text="Book id: " />
+      <Input value="" class="sapUiSmallMargin" submit=".onDelete" id="deleteInput" />
+
+      <Button class="sapUiSmallMargin" text="Delete" press=".onDelete" ></Button>
+    </FlexBox>
+	</Page>
+</mvc:View>

@@ -15,7 +15,8 @@
   },
   "scripts": {
     "start": "cds run",
-    "watch-list-report": "cds watch --open list-report/webapp/index.html?sap-ui-xx-viewCache=false"
+    "watch-list-report": "cds watch --open list-report/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-worklist": "cds watch --open worklist/webapp/index.html?sap-ui-xx-viewCache=false"
   },
   "engines": {
     "node": "^16.15"
@@ -46,6 +47,8 @@
     }
   },
   "sapux": [
-    "app/list-report"
+    "app/list-report",
+    "app/worklist",
+    "app/app"
   ]
 }

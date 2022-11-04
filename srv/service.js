@@ -1,27 +1,20 @@
 module.exports = (srv) => {
 
-    const { Books, Authors } = cds.entities('my.library')
+    // const { Books, Authors } = cds.entities('my.library')
 
     //?
     srv.on('READ', 'Books', async (req, next) => {
-        
-        try {
-            if(req.query.SELECT.search) {
-                let res = await cds.run(req.query);    
-                if(res.length == 0){
-                    const search = req.query.SELECT.search.reduce( searchReduce, "");
-                    res = await booksFromGoogle(search)
-                    
-                }
 
-                if(req.query.SELECT.count) res.$count = res.length;
-                
-                req.reply(res)
-                
-            }else throw "Error: query is empty"
-        } catch (e) {
-            console.log(e)
+        let res = await cds.run(req.query);    
+        if(res.length == 0 && req.query.SELECT.search){
+            const search = req.query.SELECT.search.reduce( searchReduce, "");
+            res = await booksFromGoogle(search)
         }
+
+        if(req.query.SELECT.count) res.$count = res.length;
+        
+        req.reply(res)
+            
         
     })
 
@@ -39,8 +32,13 @@ async function booksFromGoogle(search){
 	const googleUrl = "https://www.googleapis.com/books/v1/volumes?" + new URLSearchParams({
 		q: search
 	})
-	let books =  await (await fetch(googleUrl, {method: "GET"})).json()
-    return googleBooksFilter(books)
+    try {
+        let books =  await (await fetch(googleUrl, {method: "GET"})).json()
+        return googleBooksFilter(books)
+    } catch (error) {
+        console.log(error)
+        return []
+    }
     
 }
 
@@ -54,18 +52,17 @@ function googleBooksFilter(data){
 		}
         
         const authors = info.authors ? info.authors.map( auth => { 
-            return { 'author' : { "name" : auth, 'ID' : '-1'}, 'author_ID' : '-1', 'book_ID': '-1'}
+            return { 'author' : { "name" : auth}}
         }) : []
         
         const categories = info.categories ? info.categories.map( cat => { 
-            return { 'category' : { "name" : cat, 'ID' : '-1'}, 'category_ID' : '-1', 'book_ID' : '-1'}
+            return { 'category' : { "name" : cat}}
         }) : []
 
 		return {
-            ID: '-1',
 			title: info.title,
 			subtitle: info.subtitle || null,
-			descr: info.description ? info.description.slice(0, 99) : null,
+			descr: info.description ? info.description : null,
 			authors: authors,
 			categories: categories,
 			imageLink: thumbnail,

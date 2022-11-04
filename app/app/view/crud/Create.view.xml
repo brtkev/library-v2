@@ -1,0 +1,84 @@
+<mvc:View
+  controllerName="root.controller.crud.Create"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core"
+	xmlns="sap.m" >
+	<Page class="sapUiSmallMargin" showNavButton="true"
+		navButtonPress=".onNavBack" title="Create">
+		<f:Form id="FormToolbar"
+			editable="true"
+			ariaLabelledBy="Title1"  >
+			
+			<f:layout>
+				<f:ResponsiveGridLayout
+					labelSpanXL="4"
+					labelSpanL="3"
+					labelSpanM="4"
+					labelSpanS="12"
+					adjustLabelSpan="false"
+					emptySpanXL="0"
+					emptySpanL="4"
+					emptySpanM="0"
+					emptySpanS="0"
+					columnsXL="2"
+					columnsL="1"
+					columnsM="1"
+					singleContainerFullSize="false" />
+			</f:layout>
+			<f:formContainers>
+				<f:FormContainer ariaLabelledBy="Title2" >
+
+					<f:formElements>
+						<f:FormElement label="Title"  >
+							<f:fields>
+								<Input value="{/book/title}" id="bookTitle" submit=".onSubmit" enabled="{/inputStatus}"/>
+							</f:fields>
+						</f:FormElement>
+						<f:FormElement label="Subtitle">
+							<f:fields>
+								<Input value="{/book/subtitle}" submit=".onSubmit" enabled="{/inputStatus}"/>
+							</f:fields>
+						</f:FormElement>
+						<f:FormElement label="Description">
+							<f:fields>
+								<Input value="{/book/description}" submit=".onSubmit" enabled="{/inputStatus}"/>
+							</f:fields>
+						</f:FormElement>
+						<f:FormElement label="Print date">
+							<f:fields>
+								<Input value="{/book/printdate}" submit=".onSubmit" enabled="{/inputStatus}"/>
+							</f:fields>
+						</f:FormElement>
+						<f:FormElement label="Editorial">
+							<f:fields>
+								<Input value="{/book/editorial}" submit=".onSubmit" enabled="{/inputStatus}" />
+							</f:fields>
+						</f:FormElement>
+						<f:FormElement label="Image">
+							<f:fields>
+								<Input value="{/book/img}" submit=".onSubmit" enabled="{/inputStatus}"/>
+							</f:fields>
+						</f:FormElement>
+						<f:FormElement label="Categories">
+							<f:fields>
+								<Input value="{/book/categories}" placeholder="category,category2,category3" submit=".onSubmit" enabled="{/inputStatus}"/>
+							</f:fields>
+						</f:FormElement>
+						<f:FormElement label="Authors">
+							<f:fields>
+								<Input value="{/book/authors}" placeholder="name,name2,name3" submit=".onSubmit" enabled="{/inputStatus}" />
+							</f:fields>
+						</f:FormElement>
+						<f:FormElement >
+						</f:FormElement>
+					</f:formElements>
+				</f:FormContainer>
+			</f:formContainers>
+		</f:Form>
+		<FlexBox justifyContent="Center">
+			<Button text="Create" width="100%" press=".onSubmit" />
+		</FlexBox>
+	</Page>
+</mvc:View>

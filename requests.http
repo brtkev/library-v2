@@ -5,6 +5,10 @@ http://localhost:4004/library/Books
 
 
 ###
-#Books with authors and categories
+#Books with authors and categories google
 http://localhost:4004/library/Books?$expand=authors($expand=author),categories($expand=category)&$search=kevin&$count=true
 
+
+###
+#Books with authors and categories local
+http://localhost:4004/library/Books?$expand=authors($expand=author),categories($expand=category)&$search=kevin&$count=true

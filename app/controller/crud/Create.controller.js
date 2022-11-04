@@ -31,9 +31,10 @@ sap.ui.define([
       if(this.getOwnerComponent().titleError(data.book.title)) return;
 
       Object.keys(data.book).forEach( key => {
-        if(data.book[key] == "" || key == "categories" || key == "authors") delete data.book[key]
+        if(data.book[key] == "" ) delete data.book[key]
         
       })
+
 
       const url = "/library/Books";
 
@@ -67,3 +68,4 @@ sap.ui.define([
   return PageController;
 
 });
+

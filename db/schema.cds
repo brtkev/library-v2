@@ -10,8 +10,10 @@ using { managed, cuid } from '@sap/cds/common';
     imageLink : String;
     editorial : String(100);
     source : String(100);
-    authors : Association to many Books2Authors on authors.book = $self;
-    categories : Association to many Books2Categories on categories.book = $self;
+    authors : String;
+    categories: String;
+    // authors : Association to many Books2Authors on authors.book = $self;
+    // categories : Association to many Books2Categories on categories.book = $self;
   }
 
   entity Authors {

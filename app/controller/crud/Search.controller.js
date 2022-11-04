@@ -20,7 +20,6 @@ sap.ui.define([
 				
 				// let attribute = this.byId("bookListSelect").getSelectedItem().getKey(); //attribute of the search
 				const url = "/library/Books?" + new URLSearchParams({
-					$expand : "authors($expand=author),categories($expand=category)", 
 					$search : search,
 					$count : true,
 				})
@@ -34,13 +33,6 @@ sap.ui.define([
 						model.setData({
 							...model.getData(),
 						books : data.value.map(book => {
-								book.authors = book.authors.map( author => {
-									return author.author.name;
-								})
-
-								book.categories = book.categories.map( category => {
-									return category.category.name
-								})
 								if(book.source == 'google ebooks') msgFlag = true;
 								return book;
 							})

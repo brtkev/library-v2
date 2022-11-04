@@ -4,6 +4,7 @@ module.exports = (srv) => {
 
 
     srv.on('CREATE', 'Books', async (req, next) => {
+        console.log(req.query)
         let res = await srv.run(SELECT.from(Books).orderBy('ID desc').limit(1));
         
         let idCount = res[0].ID + 1
@@ -64,13 +65,15 @@ function googleBooksFilter(data){
 			thumbnail = info.imageLinks.thumbnail;
 		}
         
-        const authors = info.authors ? info.authors.map( auth => { 
-            return { 'author' : { "name" : auth}}
-        }) : []
+        const authors = info.authors ? info.authors.reduce( (prev, auth) => { 
+            if(prev == "") return  auth;
+            else return prev + "," + auth;
+        }, "") : ""
         
-        const categories = info.categories ? info.categories.map( cat => { 
-            return { 'category' : { "name" : cat}}
-        }) : []
+        const categories = info.categories ? info.categories.reduce( (prev,cat) => { 
+            if(prev == "")  return cat;
+            else return prev + "," + cat;
+        }, "") : ""
 
 		return {
 			title: info.title,

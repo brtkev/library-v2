@@ -24,11 +24,13 @@ sap.ui.define([
 					$search : search,
 					$count : true,
 				})
+
 				fetch(url, { method: "GET" })
 				.then(r => r.json()
 				.then(data => {
 
 					if( data["@odata.count"] > 0 ){
+						let msgFlag = false;
 						model.setData({
 							...model.getData(),
 						books : data.value.map(book => {
@@ -39,20 +41,16 @@ sap.ui.define([
 								book.categories = book.categories.map( category => {
 									return category.category.name
 								})
-
+								if(book.source == 'google ebooks') msgFlag = true;
 								return book;
 							})
 						})	
+
 						// this.byId("createHint").setVisible(false)
 						// this.byId("googleSearchButton").setVisible(true)
-						
+						if(msgFlag) MessageToast.show("click an element to add it to the collection")
 					}else{
-						modelFromGoogle(search, model).then(() =>{
-							// this.byId("createHint").setVisible(true)
-							// this.byId("googleSearchButton").setVisible(false)
-							MessageToast.show("click an element to add it to the collection")
-						})
-						.catch((err) => MessageToast.show(err))
+						MessageToast.show("No books found")
 					}
 				}))
 
@@ -61,9 +59,20 @@ sap.ui.define([
 		onPress: function(oEvent) {
 			let oItem = oEvent.getSource();
 			let oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-			oRouter.navTo("create", {
-				bookPath: window.encodeURIComponent(oItem.getBindingContext().getPath().substr(1))
-			})
+			let itemPath = oItem.getBindingContext().getPath().substr(1)
+
+			let i = parseInt(itemPath.split('/')[1]) ;
+			
+			const model = this.getView().getModel();
+			let book = model.getData().books[i];
+			
+			if(book.source != "library database"){
+				oRouter.navTo("create", {
+					bookPath: window.encodeURIComponent(itemPath)
+				})
+				
+			}
+
 		},
 
 		onGoogleSearchButtonPress: function(){

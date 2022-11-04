@@ -1,3 +1,6 @@
+
+
+
 sap.ui.define([
 	"sap/ui/core/UIComponent",
 	"sap/ui/model/json/JSONModel",
@@ -15,21 +18,12 @@ sap.ui.define([
 		init: function(){
 			// call the init function of the parent
 			UIComponent.prototype.init.apply(this, arguments);  
+			
 			//set data models
 			let oData = {
 				books : [
 				],
-				book : {
-          book_id : "",
-          title : "",
-          subtitle : "",
-          description : "",
-          printdate : "",
-          editorial: "",
-          img : "",
-          categories : "",
-          authors: ""
-        },
+				book : this.getBookModel(),
 				inputStatus : false
 				
 			};
@@ -86,6 +80,21 @@ sap.ui.define([
 		        return true;
 		    }
 		    return false;
-	    }
+	    },
+
+		getBookModel: function(){
+			return {
+				ID : "",
+				title : "",
+				subtitl: "",
+				descr: "",
+				publishDate: "",
+				imageLink: "",
+				editorial: "",
+				source: "",
+				authors: "",
+				categories: "",
+			}
+		}
 	})
 })

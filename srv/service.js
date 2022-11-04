@@ -4,17 +4,15 @@ module.exports = (srv) => {
 
 
     srv.on('CREATE', 'Books', async (req, next) => {
-
-        console.log(req.query)
         let res = await srv.run(SELECT.from(Books).orderBy('ID desc').limit(1));
-        console.log(res);
+        
         let idCount = res[0].ID + 1
         req.query.INSERT.entries = req.query.INSERT.entries.map( entry => {
             entry.ID = idCount;
             idCount++;
             return entry;
         })
-
+        
         return next(req);
     })
 

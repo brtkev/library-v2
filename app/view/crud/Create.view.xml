@@ -43,12 +43,12 @@
 						</f:FormElement>
 						<f:FormElement label="Description">
 							<f:fields>
-								<Input value="{/book/description}" submit=".onSubmit" enabled="{/inputStatus}"/>
+								<Input value="{/book/descr}" submit=".onSubmit" enabled="{/inputStatus}"/>
 							</f:fields>
 						</f:FormElement>
 						<f:FormElement label="Print date">
 							<f:fields>
-								<Input value="{/book/printdate}" submit=".onSubmit" enabled="{/inputStatus}"/>
+								<Input value="{/book/publishDate}" submit=".onSubmit" enabled="{/inputStatus}"/>
 							</f:fields>
 						</f:FormElement>
 						<f:FormElement label="Editorial">
@@ -58,7 +58,7 @@
 						</f:FormElement>
 						<f:FormElement label="Image">
 							<f:fields>
-								<Input value="{/book/img}" submit=".onSubmit" enabled="{/inputStatus}"/>
+								<Input value="{/book/imageLink}" submit=".onSubmit" enabled="{/inputStatus}"/>
 							</f:fields>
 						</f:FormElement>
 						<f:FormElement label="Categories">

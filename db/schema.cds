@@ -2,7 +2,7 @@ namespace my.library;
 using { managed, cuid } from '@sap/cds/common';
 
   entity Books {
-    key ID : Integer;
+    key ID : Integer ;
     title : String(100) not null; 
     subtitle : String(100);
     descr : String;

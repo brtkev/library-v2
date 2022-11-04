@@ -1,7 +1,7 @@
 
 
 #Books
-http://localhost:4004/library/Books
+http://localhost:4004/library/Books?$orderby=ID desc&
 
 
 ###
@@ -12,3 +12,17 @@ http://localhost:4004/library/Books?$expand=authors($expand=author),categories($
 ###
 #Books with authors and categories local
 http://localhost:4004/library/Books?$expand=authors($expand=author),categories($expand=category)&$search=kevin&$count=true
+
+
+###
+#create book
+POST http://localhost:4004/library/Books
+OData-Version: 4.0
+Content-Type: application/json;odata.metadata=minimal
+Accept: application/json
+
+{
+    "title": "kevin 124",
+    "subtitle": "some subtitle",
+    "source": "library database"
+}

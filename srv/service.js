@@ -1,6 +1,22 @@
 module.exports = (srv) => {
 
-    // const { Books, Authors } = cds.entities('my.library')
+    const { Books, Authors } = cds.entities('my.library')
+
+
+    srv.on('CREATE', 'Books', async (req, next) => {
+
+        console.log(req.query)
+        let res = await srv.run(SELECT.from(Books).orderBy('ID desc').limit(1));
+        console.log(res);
+        let idCount = res[0].ID + 1
+        req.query.INSERT.entries = req.query.INSERT.entries.map( entry => {
+            entry.ID = idCount;
+            idCount++;
+            return entry;
+        })
+
+        return next(req);
+    })
 
     //?
     srv.on('READ', 'Books', async (req, next) => {
@@ -18,7 +34,6 @@ module.exports = (srv) => {
         
     })
 
-    // srv.on('READ', 'Books/$count')
 
     // Add some discount for overstocked books
     srv.after('READ', 'Books', each => {

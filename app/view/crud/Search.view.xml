@@ -2,7 +2,7 @@
 		controllerName="root.controller.crud.Search"
 		xmlns="sap.m"
 		xmlns:mvc="sap.ui.core.mvc"
-		xmlns:semantic="sap.f.semantic">
+		xmlns:semantic="sap.f.semantic">  
 	<semantic:SemanticPage 
 		id="page"
         headerPinnable="false"
@@ -36,6 +36,18 @@
                             text="List of Books"
                             level="H3"/>
                         <ToolbarSpacer />
+						<Select selectedKey="title" id="select" >
+							<items>
+								<core:Item key="ID" text="id"></core:Item>
+								<core:Item key="title" text="title"></core:Item>
+								<core:Item key="subtitle" text="subtitle"></core:Item>
+								<core:Item key="descr" text="description"></core:Item>
+								<core:Item key="authors" text="authors"></core:Item>
+								<core:Item key="categories" text="categories"></core:Item>
+								<core:Item key="publishDate" text="publish date"></core:Item>
+								<core:Item key="editorial" text="editor"></core:Item>
+							</items>
+						</Select>
                         <SearchField
                             id="searchField"
                             tooltip="Enter an Books name or a part of it."

@@ -1,95 +1,108 @@
-<mvc:View
-	controllerName="root.controller.crud.Update"
-	xmlns:mvc="sap.ui.core.mvc"
-	xmlns:l="sap.ui.layout"
-	xmlns:f="sap.ui.layout.form"
-	xmlns:core="sap.ui.core"
-	xmlns="sap.m"
-	 >
-	<Page class="sapUiSmallMargin" showNavButton="true"
-		navButtonPress=".onNavBack" title="Update">
-		<f:Form id="FormToolbar"
-			editable="true"
-			ariaLabelledBy="Title1"  >
-			
-			<f:layout>
-				<f:ResponsiveGridLayout
-					labelSpanXL="4"
-					labelSpanL="3"
-					labelSpanM="4"
-					labelSpanS="12"
-					adjustLabelSpan="false"
-					emptySpanXL="0"
-					emptySpanL="4"
-					emptySpanM="0"
-					emptySpanS="0"
-					columnsXL="2"
-					columnsL="1"
-					columnsM="1"
-					singleContainerFullSize="false" />
-			</f:layout>
-			<f:formContainers>
-				<f:FormContainer ariaLabelledBy="Title2" >
-					<f:toolbar>
-						<Toolbar>
-							<Title id="Title2" text="book id:"/>
-							<SearchField
-								width="50%"
-								search=".onSearchId"
-								ariaLabelledBy="searchFieldLabel"
-								ariaDescribedBy="searchFieldDescription"
-								placeholder=""/>
-						</Toolbar>
-					</f:toolbar>
-					<f:formElements>
-						<f:FormElement label="Title"  >
-							<f:fields>
-								<Input value="{/book/title}" id="bookTitle" enabled="{/inputStatus}" submit=".onSubmit"/>
-							</f:fields>
-						</f:FormElement>
-						<f:FormElement label="Subtitle">
-							<f:fields>
-								<Input value="{/book/subtitle}" enabled="{/inputStatus}" submit=".onSubmit"/>
-							</f:fields>
-						</f:FormElement>
-						<f:FormElement label="Description">
-							<f:fields>
-								<Input value="{/book/descr}" enabled="{/inputStatus}" submit=".onSubmit"/>
-							</f:fields>
-						</f:FormElement>
-						<f:FormElement label="Print date">
-							<f:fields>
-								<Input value="{/book/publishDate}" enabled="{/inputStatus}" submit=".onSubmit"/>
-							</f:fields>
-						</f:FormElement>
-						<f:FormElement label="Editorial">
-							<f:fields>
-								<Input value="{/book/editorial}" enabled="{/inputStatus}" submit=".onSubmit" />
-							</f:fields>
-						</f:FormElement>
-						<f:FormElement label="Image">
-							<f:fields>
-								<Input value="{/book/imageLink}" enabled="{/inputStatus}" submit=".onSubmit"/>
-							</f:fields>
-						</f:FormElement>
-						<f:FormElement label="Categories">
-							<f:fields>
-								<Input value="{/book/categories}" enabled="{/inputStatus}" placeholder="category,category2,category3" submit=".onSubmit"/>
-							</f:fields>
-						</f:FormElement>
-						<f:FormElement label="Authors">
-							<f:fields>
-								<Input value="{/book/authors}" enabled="{/inputStatus}" placeholder="name,name2,name3" submit=".onSubmit" />
-							</f:fields>
-						</f:FormElement>
-						<f:FormElement >
-						</f:FormElement>
-					</f:formElements>
-				</f:FormContainer>
-			</f:formContainers>
-		</f:Form>
-		<FlexBox justifyContent="Center">
-			<Button text="Update" width="100%" press=".onSubmit" enabled="{/inputStatus}" />
-		</FlexBox>
-	</Page>
-</mvc:View>
+<mvc:View xmlns:core="sap.ui.core"
+		controllerName="root.controller.crud.Update"
+		xmlns="sap.m"
+		xmlns:mvc="sap.ui.core.mvc"
+		xmlns:f="sap.ui.layout.form"
+		xmlns:semantic="sap.f.semantic">  
+	<semantic:SemanticPage 
+		id="page"
+        headerPinnable="false"
+        toggleHeaderOnTitleClick="false">
+
+		<semantic:titleHeading>
+            <Title
+                text="Update"
+                level="H2"/>
+        </semantic:titleHeading>
+		
+		<semantic:content>
+			<mvc:View >
+				<FlexBox justifyContent="Center">
+					<f:Form id="FormToolbar"
+						editable="true"
+						ariaLabelledBy="Title1"  >
+						
+						<f:layout>
+							<f:ResponsiveGridLayout
+								labelSpanXL="4"
+								labelSpanL="3"
+								labelSpanM="4"
+								labelSpanS="12"
+								adjustLabelSpan="false"
+								emptySpanXL="0"
+								emptySpanL="4"
+								emptySpanM="0"
+								emptySpanS="0"
+								columnsXL="2"
+								columnsL="1"
+								columnsM="1"
+								singleContainerFullSize="false" />
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer ariaLabelledBy="Title2" >
+								<f:toolbar>
+									<Toolbar>
+										<Title id="Title2" text="book id:"/>
+										<SearchField
+											width="50%"
+											search=".onSearchId"
+											ariaLabelledBy="searchFieldLabel"
+											ariaDescribedBy="searchFieldDescription"
+											placeholder=""/>
+									</Toolbar>
+								</f:toolbar>
+								<f:formElements>
+									<f:FormElement label="Title"  >
+										<f:fields>
+											<Input value="{/book/title}" id="bookTitle" enabled="{/inputStatus}" submit=".onSubmit"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Subtitle">
+										<f:fields>
+											<Input value="{/book/subtitle}" enabled="{/inputStatus}" submit=".onSubmit"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Description">
+										<f:fields>
+											<Input value="{/book/descr}" enabled="{/inputStatus}" submit=".onSubmit"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Print date">
+										<f:fields>
+											<Input value="{/book/publishDate}" enabled="{/inputStatus}" submit=".onSubmit"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Editorial">
+										<f:fields>
+											<Input value="{/book/editorial}" enabled="{/inputStatus}" submit=".onSubmit" />
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Image">
+										<f:fields>
+											<Input value="{/book/imageLink}" enabled="{/inputStatus}" submit=".onSubmit"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Categories">
+										<f:fields>
+											<Input value="{/book/categories}" enabled="{/inputStatus}" placeholder="category,category2,category3" submit=".onSubmit"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Authors">
+										<f:fields>
+											<Input value="{/book/authors}" enabled="{/inputStatus}" placeholder="name,name2,name3" submit=".onSubmit" />
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement >
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+				</FlexBox>
+				<FlexBox justifyContent="Center">
+					<Button text="Update" width="100%" press=".onSubmit" enabled="{/inputStatus}" />
+				</FlexBox>
+			</mvc:View>
+		</semantic:content>
+	</semantic:SemanticPage >
+</mvc:View>		

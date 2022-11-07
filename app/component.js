@@ -58,8 +58,8 @@ sap.ui.define([
 			if(sPreviousHash !== undefined){
 				window.history.go(-1)
 			}else{
-				let oRouter = UIComponent.getRouterFor(this);
-				oRouter.navTo("overview", {}, true)
+				
+				this.getRouter().navTo("overview", {}, true);
 			}
 	    },
 

@@ -46,3 +46,8 @@ Accept: application/json
 ###
 #delete book
 DELETE http://localhost:4004/library/Books(1)
+
+
+###
+#filter
+GET http://localhost:4004/library/Books?$filter=contains(title,'wu')

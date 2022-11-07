@@ -9,42 +9,48 @@ sap.ui.define([
 		
 		},
 		onSearch: function(oEvent){
-			let model = this.getView().getModel();
-			let search = oEvent.getParameter("query");
+			let model = this.getView().getModel(),
+				search = oEvent.getParameter("query"),
+				attribute = this.byId("select").getSelectedItem().getKey();
+
 			model.setData({...model.getData(), books: []})
-			if(!search){
-				// this.byId("createHint").setVisible(false)
-				// this.byId("googleSearchButton").setVisible(false)
-			}else{
-				//get attribute to filter
-				
-				// let attribute = this.byId("bookListSelect").getSelectedItem().getKey(); //attribute of the search
-				const url = "/library/Books?" + new URLSearchParams({
-					$search : search,
-					$count : true,
-				})
+			if(search){
+				let url;
+				if(attribute == 'ID'){
+					url = `/library/Books(${search})`
+				}
+				else {
+					
+					let filter = `contains(${attribute},\'${search}\')`
+	
+					url = "/library/Books?" + new URLSearchParams({
+						$count : true,
+						$filter : filter
+					})
+				}
 
 				fetch(url, { method: "GET" })
 				.then(r => r.json()
 				.then(data => {
-
-					if( data["@odata.count"] > 0 ){
+					if(data.hasOwnProperty('error')) throw data;
+					
+					if( data["@odata.count"] > 0 || attribute == 'ID'){
 						let msgFlag = false;
 						model.setData({
 							...model.getData(),
-						books : data.value.map(book => {
+						books : attribute == 'ID' ? [data] :
+							data.value.map(book => {
 								if(book.source == 'google ebooks') msgFlag = true;
 								return book;
 							})
 						})	
 
-						// this.byId("createHint").setVisible(false)
-						// this.byId("googleSearchButton").setVisible(true)
 						if(msgFlag) MessageToast.show("click an element to add it to the collection")
 					}else{
 						MessageToast.show("No books found")
 					}
 				}))
+				.catch(err => MessageToast.show("No books found")) 
 
 			}
 		},

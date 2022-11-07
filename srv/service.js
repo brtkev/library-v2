@@ -28,10 +28,15 @@ module.exports = (srv) => {
             return;
         }
 
+        
+        
+        if (res.length == 0) {
+            let s = req._queryOptions.$filter.split(',')[1];
+            s = s.slice(1, s.length-2);
 
-        if (res.length == 0 && req.query.SELECT.search) {
-            const search = req.query.SELECT.search.reduce(searchReduce, "");
-            res = await booksFromGoogle(search)
+            
+
+            res = s != '' ? await booksFromGoogle(s) : [];
         }
 
         if (req.query.SELECT.count) res.$count = res.length;

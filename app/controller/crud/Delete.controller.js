@@ -16,20 +16,20 @@ sap.ui.define([
       
       const url = `/library/Books(${ID})`
       fetch(url, { method: "DELETE" })
-      .then(r => r.json()
-      .then(data => { 
-        console.log(data)
-        if(data.hasOwnAttribute("error")){
-          MessageToast.show(`Error, no that Id doesn't exist`);
-        }
-        else {
+      .then( async r => {
+
+        try {
+          if((await r.json()).hasOwnAttribute("error")) MessageToast.show(`Error, no that Id doesn't exist`);
+          else MessageToast.show(`book with id of ${ID} was deleted from the collection`);
+        } catch (error) {
           MessageToast.show(`book with id of ${ID} was deleted from the collection`);
+          this.byId("deleteInput").setValue("");
         }
-
-      }))
+      })
       .catch(err => {
+        console.log(err)
 
-        MessageToast.show(`Error, no that Id doesn't exist`);
+        MessageToast.show(`Error, something happenede`);
       })
     },
     

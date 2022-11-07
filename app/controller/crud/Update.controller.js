@@ -12,7 +12,7 @@ sap.ui.define([
 
 
     onSearchId: function (oEvent){
-
+      
       let search = oEvent.getParameter("query");
       let model = this.getView().getModel();
       

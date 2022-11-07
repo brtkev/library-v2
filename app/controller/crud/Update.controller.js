@@ -1,3 +1,4 @@
+
 sap.ui.define([
   'sap/ui/core/mvc/Controller',
   "sap/ui/model/json/JSONModel",
@@ -11,6 +12,7 @@ sap.ui.define([
 
 
     onSearchId: function (oEvent){
+
       let search = oEvent.getParameter("query");
       let model = this.getView().getModel();
       

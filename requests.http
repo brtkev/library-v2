@@ -5,7 +5,7 @@ http://localhost:4004/library/Books?$orderby=ID desc&
 
 ###
 #book by id
-http://localhost:4004/library/Books(272)
+http://localhost:4004/library/Books(1)
 
 
 ###
@@ -41,3 +41,8 @@ Accept: application/json
 {
 "title" :  "kevin's cosmeticology"
 }
+
+
+###
+#delete book
+DELETE http://localhost:4004/library/Books(1)

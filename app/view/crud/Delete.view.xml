@@ -9,11 +9,11 @@
 		navButtonPress=".onNavBack" title="Delete"   >
 		<headerContent>
 			<!-- <Title text="{}" /> -->
-			<Button 
+			<!-- <Button 
 				icon="sap-icon://cancel"
 				press=".truncate"
 				text="delete all"
-				/>
+				/> -->
 		</headerContent>
 
     <FlexBox class="sapUiSmallMargin" alignItems="Center" justifyContent="Center" width="100%" >
